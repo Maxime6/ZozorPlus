@@ -10,36 +10,50 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    var delegate: Calculator?
+    let calculator = Calculator()
     
     // MARK: - Outlets
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        calculator.displayAlertDelegate = self
+    }
 
     // MARK: - Action
 
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         for (i, numberButton) in numberButtons.enumerated() {
             if sender == numberButton {
-                addNewNumber(i)
+                textView.text = calculator.addNewNumber(i)
             }
         }
     }
 
     @IBAction func plus() {
-        
+        textView.text = calculator.addition()
     }
 
     @IBAction func minus() {
-        
+        textView.text = calculator.substraction()
     }
 
     @IBAction func equal() {
-        
+        textView.text = calculator.calculateTotal()
     }
 
+}
 
-
-
+extension ViewController: DisplayAlert {
+    func showAlert(message: String) {
+        let alertVC = UIAlertController(title: "Zéro!", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
+    
+    
+    
+    
 }
