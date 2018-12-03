@@ -18,27 +18,39 @@ class CalculatorTestCase: XCTestCase {
         calculator = Calculator()
     }
     
-    func testGivenStringNumberIsEmpty_WhenSelectedANumber_ThenStringNumberIsUpdate() {
-        calculator.addNewNumber(2)
-        
-        XCTAssert(calculator.stringNumbers == ["2"])
+    func testCanAddOperator() {
+        XCTAssertFalse(calculator.canAddOperator)
     }
     
-    func testGivenANumberIsSelected_WhenUserChooseAddition_ThenOperatorsIsUpdate() {
-        calculator.addition()
-        
-        XCTAssert(calculator.operators == ["+"])
+    func testCanAddOperatorTrue() {
+        let _ = calculator.addNewNumber(1)
+        XCTAssertTrue(calculator.canAddOperator)
     }
     
-    func testGivenANumberIsSelected_WhenUserChooseSubstraction_ThenOperatorsIsUpdate() {
-        calculator.operators = [""]
-        calculator.substraction()
+    func testSubstraction() {
+        let _ = calculator.addNewNumber(1)
+        let _ = calculator.substraction()
+        let _ = calculator.addNewNumber(1)
         
-        XCTAssert(calculator.operators == ["-"])
+        XCTAssertEqual(calculator.calculateTotal(), "0")
     }
     
-    func testGiven_When_Then() {
+    func testIsExpressionCorrect() {
+        let _ = calculator.addNewNumber(2)
+        let _ = calculator.addition()
+        let _ = calculator.calculateTotal()
         
+        XCTAssertFalse(calculator.isExpressionCorrect)
+    }
+    
+    func testIsExpressionCorrectBis() {
+        let _ = calculator.addNewNumber(2)
+        let _ = calculator.addition()
+        let _ = calculator.addNewNumber(1)
+        let _ = calculator.calculateTotal()
+        let _ = calculator.calculateTotal()
+        
+        XCTAssertFalse(calculator.isExpressionCorrect)
     }
     
 }

@@ -62,14 +62,6 @@ class Calculator {
         return updateDisplay()
     }
     
-    func multiplication() -> String {
-        if canAddOperator {
-            operators.append("x")
-            stringNumbers.append("")
-        }
-        return updateDisplay()
-    }
-    
     func addNewNumber(_ newNumber: Int) -> String {
         if let stringNumber = stringNumbers.last {
             var stringNumberMutable = stringNumber
@@ -91,8 +83,6 @@ class Calculator {
                     total += number
                 } else if operators[i] == "-" {
                     total -= number
-                } else if operators[i] == "x" {
-                    total *= number
                 }
             }
         }
