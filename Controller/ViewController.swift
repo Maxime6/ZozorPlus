@@ -39,6 +39,10 @@ class ViewController: UIViewController {
     @IBAction func minus() {
         textView.text = calculator.substraction()
     }
+    
+    @IBAction func multiplied() {
+        textView.text = calculator.multiplication()
+    }
 
     @IBAction func equal() {
         textView.text = calculator.calculateTotal()
