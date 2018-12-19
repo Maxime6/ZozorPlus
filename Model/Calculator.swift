@@ -62,6 +62,21 @@ class Calculator {
         return updateDisplay()
     }
     
+    func calculateSquareRoot() -> String {
+        if canAddOperator {
+            guard let result = Double(calculateTotal()) else { return updateDisplay() }
+            clear()
+            let squareValue = sqrt(result)
+            if let stringNumber = stringNumbers.last {
+                var stringNumberMutable = stringNumber
+                stringNumberMutable += "\(squareValue)"
+                stringNumbers[stringNumbers.count-1] = stringNumberMutable
+            }
+            return String(squareValue)
+        }
+        return updateDisplay()
+    }
+    
     func addNewNumber(_ newNumber: Int) -> String {
         if let stringNumber = stringNumbers.last {
             var stringNumberMutable = stringNumber
@@ -76,9 +91,9 @@ class Calculator {
             return ""
         }
         
-        var total = 0
+        var total: Double = 0
         for (i, stringNumber) in stringNumbers.enumerated() {
-            if let number = Int(stringNumber) {
+            if let number = Double(stringNumber) {
                 if operators[i] == "+" {
                     total += number
                 } else if operators[i] == "-" {

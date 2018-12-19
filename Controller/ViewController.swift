@@ -43,6 +43,10 @@ class ViewController: UIViewController {
     @IBAction func equal() {
         textView.text = calculator.calculateTotal()
     }
+    
+    @IBAction func squareRoot() {
+        textView.text = calculator.calculateSquareRoot()
+    }
 
 }
 
