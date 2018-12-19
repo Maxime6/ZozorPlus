@@ -23,7 +23,8 @@ class ViewController: UIViewController {
     }
 
     // MARK: - Action
-
+    
+    // User taps on a number
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         for (i, numberButton) in numberButtons.enumerated() {
             if sender == numberButton {
@@ -31,33 +32,35 @@ class ViewController: UIViewController {
             }
         }
     }
-
+    
+    // User taps on the "+" button
     @IBAction func plus() {
         textView.text = calculator.addition()
     }
 
+    // User taps on the "-" button
     @IBAction func minus() {
         textView.text = calculator.substraction()
     }
 
+    // User taps on the "=" button
     @IBAction func equal() {
         textView.text = calculator.calculateTotal()
     }
     
+    // User taps on the "√" button
     @IBAction func squareRoot() {
         textView.text = calculator.calculateSquareRoot()
     }
 
 }
 
+// Extension of the alerts protocol
 extension ViewController: DisplayAlert {
     func showAlert(message: String) {
         let alertVC = UIAlertController(title: "Zéro!", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
-    
-    
-    
     
 }

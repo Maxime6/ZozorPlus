@@ -18,15 +18,18 @@ class CalculatorTestCase: XCTestCase {
         calculator = Calculator()
     }
     
+    // Testing if user can't add an operator
     func testGivenThereIsNoNumber_WhenUserAddAnOperator_ThenHeCantAddOperator() {
         XCTAssertFalse(calculator.canAddOperator)
     }
     
+    // Testing if user can add an operator
     func testGivenThereIsNoCalcul_WhenUserAddANumber_ThenHeCanAddOperator() {
         let _ = calculator.addNewNumber(1)
         XCTAssertTrue(calculator.canAddOperator)
     }
     
+    // Substraction calculation test
     func testGivenThereIsNoCalcul_WhenUserMakeASubstraction_ThenCalculateTotal() {
         let _ = calculator.addNewNumber(1)
         let _ = calculator.substraction()
@@ -35,6 +38,7 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.calculateTotal(), "0.0")
     }
     
+    // Expression is incorrect when calcul is not finish
     func testGivenACalculIsNotCompleted_WhenCalculateTotal_ThenExpressionIsIncorrect() {
         let _ = calculator.addNewNumber(2)
         let _ = calculator.addition()
@@ -43,7 +47,8 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertFalse(calculator.isExpressionCorrect)
     }
     
-    func testGivenCalculateTotal_WhenCalculateTotalAgain_ThenExpressionIsCorrect() {
+    // Expression is inorrect after two calculate total
+    func testGivenCalculateTotal_WhenCalculateTotalAgain_ThenExpressionIsIncorrect() {
         let _ = calculator.addNewNumber(2)
         let _ = calculator.addition()
         let _ = calculator.addNewNumber(1)
@@ -53,6 +58,7 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertFalse(calculator.isExpressionCorrect)
     }
     
+    // Square root calculation test
     func testGivenMakeAnAddition_WhenSquareRoot_ThenCalculateTotal() {
         let _ = calculator.addNewNumber(5)
         let _ = calculator.addition()
@@ -61,6 +67,7 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.calculateSquareRoot(), "5.0")
     }
     
+    // Square root expression incorrect test
     func testGivenAddAnOperatorPlusOrMinus_WhenSquareRoot_ThenExpressionIsIncorrect() {
         let _ = calculator.addNewNumber(5)
         let _ = calculator.substraction()

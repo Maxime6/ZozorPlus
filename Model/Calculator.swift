@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Protocol for Alerts
 protocol DisplayAlert {
     func showAlert(message: String)
     
@@ -46,6 +47,8 @@ class Calculator {
     }
     
     // MARK: - Methods
+    
+    // Function addition
     func addition() -> String {
         if canAddOperator {
             operators.append("+")
@@ -54,6 +57,7 @@ class Calculator {
         return updateDisplay()
     }
     
+    // Function substraction
     func substraction() -> String {
         if canAddOperator {
             operators.append("-")
@@ -62,6 +66,7 @@ class Calculator {
         return updateDisplay()
     }
     
+    // Function SquareRoot
     func calculateSquareRoot() -> String {
         if canAddOperator {
             guard let result = Double(calculateTotal()) else { return updateDisplay() }
@@ -77,6 +82,7 @@ class Calculator {
         return updateDisplay()
     }
     
+    // Add a new number
     func addNewNumber(_ newNumber: Int) -> String {
         if let stringNumber = stringNumbers.last {
             var stringNumberMutable = stringNumber
@@ -86,6 +92,7 @@ class Calculator {
         return updateDisplay()
     }
     
+    // Calculate the total of the calculation
     func calculateTotal() -> String {
         if !isExpressionCorrect {
             return ""
@@ -102,11 +109,10 @@ class Calculator {
             }
         }
         clear()
-        
         return String(total)
-        
     }
     
+    // Update the display
     func updateDisplay() -> String {
         var text = ""
         for (i, stringNumber) in stringNumbers.enumerated() {
@@ -120,6 +126,7 @@ class Calculator {
         return text
     }
     
+    // Clear tables of numbers and operators
     func clear() {
         stringNumbers = [String()]
         operators = ["+"]
